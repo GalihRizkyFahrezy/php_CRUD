@@ -1,25 +1,12 @@
 <?php
-include 'database.php';
 
-if(isset($_GET['id']))
-{
-    $id = $_GET['id'];
+include("database.php");
 
-    $sql = "DELETE FROM items WHERE id = $id";
+$id = $_GET['id'];
 
-    if ($conn->query($sql) === TRUE) {
-        echo "Data berhasil dihapus";
-        header("Location: index.php");
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
-    }
-} else {
-    echo "ID tidak ditemukan";
-    exit;
-}
+$sql = "delete from mahasiswa where id = $id";
 
+$conn->query($sql);
 $conn->close();
-
-
-
+header("location: index.php");
 ?>
